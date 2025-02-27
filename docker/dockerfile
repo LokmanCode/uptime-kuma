@@ -109,6 +109,6 @@ RUN chmod +x /app/extra/upload-github-release-asset.sh
 # RUN /app/extra/upload-github-release-asset.sh github_api_token=$GITHUB_TOKEN owner=louislam repo=uptime-kuma tag=$VERSION filename=$FILE
 
 # Dist only
-RUN cd /app && tar -zcvf $DIST dist
+RUN cd /app && npm install && npm run build && tar -zcvf dist.tar.gz dist
 RUN /app/extra/upload-github-release-asset.sh github_api_token=$GITHUB_TOKEN owner=louislam repo=uptime-kuma tag=$VERSION filename=/app/$DIST
 
